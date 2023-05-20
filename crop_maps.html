@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">  
+
+    <!-- datatable css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <!-- datatable js -->
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="table.js"></script>
+
+    <title>Document</title>
+    <style>
+        body,html{
+            font-family: 'Roboto', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
+            background-color: #afbd93;
+        }
+        .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+  background-color: black;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+#heading{
+    margin-left: 260px;
+    color: white;
+    font-size: 40px;
+}
+#logout{
+  margin-top: 200px;
+  font-size: large;
+  background-color:#444C38;
+  border-radius: 10px;
+  color: white;
+}
+#logout:hover{
+  background-color: white;
+  opacity: 0.8;
+  color: #444C38;
+  border-radius: 10px;
+}
+#dashboard{
+  margin-top: 100px;
+}
+#graph{
+  margin-right: -120px;
+}
+
+#chart-right{
+  margin-left: 213px;
+}
+
+#card-left{
+  margin-left: -50px;
+}
+#datatable{
+  width: 1100px;
+ margin-left: 200px;
+}
+#web-button{
+  border: none;
+  background-color: rgba(32, 32, 32, 0.505);
+  width: 200px;
+  text-align: left;
+  height: 30px;
+  color: white;
+}
+#web-button:hover{
+    background-color: white;
+    color: black;
+    opacity: 0.5;
+}
+#card-font{
+  font-size: x-large;
+  background-color: #444C38;
+  color: white;
+}
+#cards:hover{
+  box-shadow: 0px 8px 4px rgba(53, 53, 53, 0.5);
+  z-index: 10;
+  filter: contrast(4px);
+  transform: scale(1.1);
+   
+}
+#main-navbar{
+    background-color: #444C38;
+    color: white;
+}
+#nav-items{
+    color: white;
+    font-size: larger;
+}
+#example{
+    background-color: rgb(255, 254, 234);
+}
+#graph-1{
+    height: 350px;
+}
+#graph-2{
+height: 350px;
+width: 320px;
+margin-left: 90px;
+border: none;
+}
+
+#graph-3{
+background-color: white;
+width: 500px;
+border-radius: 5px;
+}
+#logoo{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#card2-left{
+    margin-left: 210px;
+
+}
+#cards2{
+    width:275px;
+}
+#card2-button{
+    background-color: rgb(0, 40, 0);
+    color: white;
+    border: 1px solid white;
+}
+
+#card2-button:hover{
+    background-color: white;
+    color: rgb(0, 42, 0);
+    border: 1px solid rgb(0, 49, 0);
+}
+#cards2-bg:hover{
+    background-color: #444C38;
+    color: white;
+    transform: scale(1.1);
+}
+.map-container-2{
+   overflow:hidden; 
+  padding-bottom:56.25%;
+  position:relative; 
+  height:0; 
+  margin-right: 200px;
+
+}
+.map-container-2 iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+}
+#map-container-google-2{
+    margin-left: 225px;
+    border-radius: 10px;
+
+}
+    </style>
+</head>
+<body>
+  
+  <!-- DASHBOARD -->
+  
+<div class="container" id="dashboard">
+  <div class="row">
+
+    <!-- sidebar -->
+    <div class="col">
+      <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-dark">
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4"> <br>
+            <a href=""><img src="logo.png" alt="" style="width: 200px;"id="logoo"></a>
+            <br>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              aria-current="true"
+            >
+              <span><button id="web-button" onclick="dashboard()">Main dashboard</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+             <span><button id="web-button">Schedule</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              ><span><button id="web-button">Tasks</button></span></a
+            >
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              ><span><button id="web-button" onclick="crops()">Crops</button></span></a
+            >
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+              <span><button id="web-button" onclick="alarms()">Alarms</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+              <span><button id="web-button" onclick="map()">Crop Map</button></span>
+            </a>
+    
+
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple" id="logout" onclick="logout()"> 
+                <span>Logout</span></a
+            >
+          </div>
+        </div>
+      </nav>
+   </div>
+
+   <script>
+    
+    function logout(){
+      window.open("http://127.0.0.1:5500/Admin.html?");
+    }
+    function dashboard(){
+        window.open("http://127.0.0.1:5500/dashboard.html#");
+    }
+    function crops(){
+      window.open("http://127.0.0.1:5500/crops.html");
+    }
+    function alarms(){
+      window.open("http://127.0.0.1:5500/alarms.html");
+    }
+   </script>
+
+    <div id="card-left" class="col">
+        <div class="card text-success mb-3" style="max-width: 18rem;" id="cards">
+            <div class="card-header" id="card-font">Soil Tempreature</div>
+            <div class="card-body">
+              <h1 class="card-title">36&#8451;</h1>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+          </div>
+    </div>
+    <div class="col"><div class="card text-success mb-3" style="max-width: 18rem;" id="cards">
+        <div class="card-header"  id="card-font">Soil Type</div>
+        <div class="card-body">
+          <h1 class="card-title">Black</h1>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col"><div class="card text-success mb-3" style="max-width: 18rem;" id="cards">
+        <div class="card-header"  id="card-font">Rain Condition</div>
+        <div class="card-body">
+          <h1 class="card-title">1200 mm</h1>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col"><div class="card text-success mb-3" style="max-width: 18rem;" id="cards">
+        <div class="card-header"  id="card-font">Weather</div>
+        <div class="card-body">
+          <h1 class="card-title">26&#8451;</h1>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make  the card's content.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+ 
+
+<!--Google map-->
+<div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+    <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" width="1070px" height="500px"
+
+      style="border:2px solid white; border-radius: 10px;" allowfullscreen></iframe>
+  </div>
+  
+  <!--Google Maps-->
+
+
+      <!-- NAVBAR -->
+      <nav id="main-navbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+    
+          <!-- Brand -->
+          <a class="navbar-brand" href="#">
+            <img
+              src="Menu_icon_icon-icons.com_71858.png"
+              height="60" width="60"
+              
+              loading="lazy"
+            />
+          </a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" id="nav-items" aria-current="page" href="http://127.0.0.1:5500/navbar/home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/pricing.html">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/contact.html">Contact</a>
+              </li>
+              <li>
+                <a id="heading">- XANDER -</a>
+              </li>
+            </ul>
+          </div>
+
+ 
+
+          <div>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="employee.png" height="25" width="25" id="profile" loading="lazy" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Your Profile"/>
+                          <i class="fas fa-user me-2"></i>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+
+          
+
+
+           
+        </div>
+
+        <!-- tooltip -->
+        <script>
+          // Initialize tooltips
+          var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+          })
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+        <script src="my_chart.js"></script>
+        <script src="myChart.js"></script>
+          
+</body>
+</html>
