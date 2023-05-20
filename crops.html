@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">  
+
+    <!-- datatable css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <!-- datatable js -->
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="table.js"></script>
+
+    <title>Document</title>
+    <style>
+        body,html{
+            font-family: 'Roboto', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
+            background-color: #afbd93;
+        }
+        .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+  background-color: black;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+#heading{
+    margin-left: 260px;
+    color: white;
+    font-size: 40px;
+}
+#logout{
+  margin-top: 200px;
+  font-size: large;
+  background-color:#444C38;
+  border-radius: 10px;
+  color: white;
+}
+#logout:hover{
+  background-color: white;
+  opacity: 0.8;
+  color: #444C38;
+  border-radius: 10px;
+}
+#dashboard{
+  margin-top: 100px;
+}
+#graph{
+  margin-right: -120px;
+}
+
+#chart-right{
+  margin-left: 213px;
+}
+
+#card-left{
+  margin-left: -50px;
+}
+#datatable{
+  width: 1100px;
+ margin-left: 200px;
+}
+#web-button{
+  border: none;
+  background-color: rgba(32, 32, 32, 0.505);
+  width: 200px;
+  text-align: left;
+  height: 30px;
+  color: white;
+}
+
+#web-button:hover{
+    background-color: white;
+    color: black;
+    opacity: 0.5;
+}
+
+#web-button1{
+  border: none;
+  background-color: rgba(32, 32, 32, 0.505);
+  width: 200px;
+  margin-left: 15px;
+  text-align: left;
+  height: 30px;
+  color: white;
+}
+#web-button1:hover{
+    background-color: white;
+    color: black;
+    opacity: 0.5;
+}
+#card-font{
+  font-size: x-large;
+  background-color: #444C38;
+  color: white;
+}
+#main-navbar{
+    background-color: #444C38;
+    color: white;
+}
+#nav-items{
+    color: white;
+    font-size: larger;
+}
+#example{
+    background-color: rgb(255, 254, 234);
+    /* margin-top: 10px; */
+    margin-left: 20px;
+}
+#graph-1{
+    height: 350px;
+}
+#graph-2{
+height: 350px;
+width: 320px;
+margin-left: 90px;
+border: none;
+}
+
+#graph-3{
+background-color: white;
+width: 500px;
+border-radius: 5px;
+}
+#logoo{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#cards:hover{
+  box-shadow: 0px 8px 4px rgba(53, 53, 53, 0.5);
+  z-index: 10;
+  filter: contrast(4px);
+   transform: scale(1.1);
+}
+#crop-form{
+  margin-left: 230px;
+  /* padding: 50px; */
+}
+#form-bg{
+    background-color: rgba(255, 255, 255, 0.617);
+    width: 1070px;
+    border-radius: 10px;
+    height: 270px ;
+    margin-right: 38px;
+    margin-top: 30px;
+
+}
+#style1{
+    margin-left: 74px;
+}
+
+#form-but{
+    margin-left: 430px;
+    width: 150px;
+    background-color: #2a2f22;
+    color: white;
+    border: none;
+}
+#form-but:hover{
+  color: #2a2f22;
+  background-color: white;
+  border: 2px solid #2a2f22;
+}
+/* crops dropdown */
+dropdown-menu li {
+position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+display: none;
+position: absolute;
+left: 100%;
+top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+right: 100%;
+left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+display: block;
+}
+    </style>
+</head>
+<body>
+  
+  <!-- DASHBOARD -->
+  
+<div class="container" id="dashboard">
+  <div class="row">
+
+    <!-- sidebar -->
+    <div class="col">
+      <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-dark">
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4"> <br>
+            <a href=""><img src="logo.png" alt="" style="width: 200px;"id="logoo"></a>
+            <br>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              aria-current="true"
+            >
+              <span><button id="web-button" onclick="dashboard()">Main dashboard</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+             <span><button onclick="website()" id="web-button">Schedule</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              ><span><button id="web-button">Tasks</button></span></a
+            >
+            <!-- <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark"
+              ><span><button id="web-button">Crops</button></span></a
+            > -->
+
+
+            <div class="dropdown">
+              <button class="dropdown-toggle" type="button" id="web-button1" data-bs-toggle="dropdown" aria-expanded="false">
+                Crops &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Food 
+                  </a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#">Cereals</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Seeds</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Fruits</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Vegetables</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Forage</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#">Hay</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Silage</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Fiber</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#">Plants grown to produce fiber for textiles, cordage, filling, and paper are known as a fiber type of crops. <br> 
+                        The well-known fiber plants are cotton, hemp, jute, kenaf, and flax.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Oil</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#"> the oil type of crops is the second most important determinant of the agricultural economy (after cereals) and is the third largest <br> user of farmland
+                        The essential plants of this type are soybeans, sunflower seeds, rapeseed, canola, and peanuts.</a>
+                    </li>
+                  </ul></li>
+                <li><a class="dropdown-item" href="#">Ornamental</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#"> Plants grown for decorative purposes in parks, gardens, and landscaping design projects are related to the ornamental type. Ivy, oleander, <br> holly, tulips, and azaleas are common decorative plants.</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="#">Industrial</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li>
+                      <a class="dropdown-item" href="#">Industrial plants are grown for profit and industrial use. They are also referred to as cash or commercial type of crops and include cotton, jute, <br> sugarcane, sugarbeet, coffee, tea, tobacco, coconut, and soybeans.</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+              <span><button id="web-button" onclick="alarms()">Alarms</button></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-dark">
+              <span><button id="web-button" onclick="map()">Crop Map</button></span>
+            </a>
+    
+
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple" id="logout" onclick="logout()"> 
+                <span>Logout</span></a
+            >
+          </div>
+        </div>
+      </nav>
+   </div>
+
+   <script>
+     
+    function logout(){
+      window.open("http://127.0.0.1:5500/Admin.html?");
+    }
+    function dashboard(){
+      window.open("http://127.0.0.1:5500/dashboard.html");
+    }
+    function alarms(){
+      window.open("http://127.0.0.1:5500/alarms.html");
+    }
+    function map(){
+      window.open("http://127.0.0.1:5500/crop_maps.html");
+    }
+   </script>
+
+<div id="crop-form">
+  <form class="row g-3" id="form-bg">
+    <div class="col-md-5" id="style1">
+      <label for="inputEmail4" class="form-label">Crop Name</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-5" >
+      <label for="inputPassword4" class="form-label">Crop Model</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <br>
+    <div class="col-md-5" id="style1">
+      <label for="inputState" class="form-label">Landcover</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option selected>Less then 1arc</option>
+        <option selected>1 to 5</option>
+        <option selected>Greater then 5arc</option>
+      </select>
+    </div>
+    <div class="col-md-5">
+        <label for="inputState" class="form-label"> Crop Operability Status</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+          <option>Poor Crop</option>
+          <option>Good Crop</option>
+          <option>Best Crop</option>
+          <option>No Crop</option>
+        </select>
+      </div>
+    
+    <div class="col-12" >
+      <button type="submit" class="btn btn-primary" id="form-but">Submit</button>
+      <br>
+    </div>
+    <br>
+  </form>
+  <br>
+  <br>
+</div>
+<br>
+  <!-- DATA TABLE -->
+  
+  <div class="container" id="datatable"> 
+  <table id="example" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Crop Name</th>
+            <th>Crop Model</th>
+            <th>Land Cover</th>
+            <th>Operability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tiger Nixon</td>
+            <td>System Architect</td>
+            <td>Edinburgh</td>
+            <td>61</td>
+        </tr>
+        <tr>
+            <td>Garrett Winters</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>63</td>
+        </tr>
+        <tr>
+            <td>Ashton Cox</td>
+            <td>Junior Technical Author</td>
+            <td>San Francisco</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>Cedric Kelly</td>
+            <td>Senior Javascript Developer</td>
+            <td>Edinburgh</td>
+            <td>22</td>
+
+        </tr>
+        <tr>
+            <td>Airi Satou</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>33</td>
+            
+        </tr>
+        <tr>
+            <td>Brielle Williamson</td>
+            <td>Integration Specialist</td>
+            <td>New York</td>
+            <td>61</td>
+            
+        </tr>
+        <tr>
+            <td>Herrod Chandler</td>
+            <td>Sales Assistant</td>
+            <td>San Francisco</td>
+            <td>59</td>
+            
+        </tr>
+        <tr>
+            <td>Rhona Davidson</td>
+            <td>Integration Specialist</td>
+            <td>Tokyo</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>Colleen Hurst</td>
+            <td>Javascript Developer</td>
+            <td>San Francisco</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>Sonya Frost</td>
+            <td>Software Engineer</td>
+            <td>Edinburgh</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>Jena Gaines</td>
+            <td>Office Manager</td>
+            <td>London</td>
+            <td>30</td>
+        </tr>
+        <tr>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+      </tr>
+      <tr>
+          <td>Garrett Winters</td>
+          <td>Accountant</td>
+          <td>Tokyo</td>
+          <td>63</td>
+      </tr>
+      <tr>
+          <td>Ashton Cox</td>
+          <td>Junior Technical Author</td>
+          <td>San Francisco</td>
+          <td>66</td>
+      </tr>
+      <tr>
+          <td>Cedric Kelly</td>
+          <td>Senior Javascript Developer</td>
+          <td>Edinburgh</td>
+          <td>22</td>
+
+      </tr>
+      <tr>
+          <td>Airi Satou</td>
+          <td>Accountant</td>
+          <td>Tokyo</td>
+          <td>33</td>
+          
+      </tr>
+      <tr>
+          <td>Brielle Williamson</td>
+          <td>Integration Specialist</td>
+          <td>New York</td>
+          <td>61</td>
+          
+      </tr>
+      <tr>
+          <td>Herrod Chandler</td>
+          <td>Sales Assistant</td>
+          <td>San Francisco</td>
+          <td>59</td>
+          
+      </tr>
+      <tr>
+          <td>Rhona Davidson</td>
+          <td>Integration Specialist</td>
+          <td>Tokyo</td>
+          <td>55</td>
+      </tr>
+      <tr>
+          <td>Colleen Hurst</td>
+          <td>Javascript Developer</td>
+          <td>San Francisco</td>
+          <td>39</td>
+      </tr>
+      <tr>
+          <td>Sonya Frost</td>
+          <td>Software Engineer</td>
+          <td>Edinburgh</td>
+          <td>23</td>
+      </tr>
+      <tr>
+          <td>Jena Gaines</td>
+          <td>Office Manager</td>
+          <td>London</td>
+          <td>30</td>
+      </tr>
+      <tr>
+        <td>Tiger Nixon</td>
+        <td>System Architect</td>
+        <td>Edinburgh</td>
+        <td>61</td>
+    </tr>
+    <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+    </tr>
+    <tr>
+        <td>Ashton Cox</td>
+        <td>Junior Technical Author</td>
+        <td>San Francisco</td>
+        <td>66</td>
+    </tr>
+    <tr>
+        <td>Cedric Kelly</td>
+        <td>Senior Javascript Developer</td>
+        <td>Edinburgh</td>
+        <td>22</td>
+
+    </tr>
+    <tr>
+        <td>Airi Satou</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>33</td>
+        
+    </tr>
+    <tr>
+        <td>Brielle Williamson</td>
+        <td>Integration Specialist</td>
+        <td>New York</td>
+        <td>61</td>
+        
+    </tr>
+    <tr>
+        <td>Herrod Chandler</td>
+        <td>Sales Assistant</td>
+        <td>San Francisco</td>
+        <td>59</td>
+        
+    </tr>
+    <tr>
+        <td>Rhona Davidson</td>
+        <td>Integration Specialist</td>
+        <td>Tokyo</td>
+        <td>55</td>
+    </tr>
+    <tr>
+        <td>Colleen Hurst</td>
+        <td>Javascript Developer</td>
+        <td>San Francisco</td>
+        <td>39</td>
+    </tr>
+    <tr>
+        <td>Sonya Frost</td>
+        <td>Software Engineer</td>
+        <td>Edinburgh</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>Jena Gaines</td>
+        <td>Office Manager</td>
+        <td>London</td>
+        <td>30</td>
+    </tr>
+   <tr>
+            <td>Tiger Nixon</td>
+            <td>System Architect</td>
+            <td>Edinburgh</td>
+            <td>61</td>
+        </tr>
+        <tr>
+            <td>Garrett Winters</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>63</td>
+        </tr>
+        <tr>
+            <td>Ashton Cox</td>
+            <td>Junior Technical Author</td>
+            <td>San Francisco</td>
+            <td>66</td>
+        </tr>
+        <tr>
+            <td>Cedric Kelly</td>
+            <td>Senior Javascript Developer</td>
+            <td>Edinburgh</td>
+            <td>22</td>
+
+        </tr>
+        <tr>
+            <td>Airi Satou</td>
+            <td>Accountant</td>
+            <td>Tokyo</td>
+            <td>33</td>
+            
+        </tr>
+        <tr>
+            <td>Brielle Williamson</td>
+            <td>Integration Specialist</td>
+            <td>New York</td>
+            <td>61</td>
+            
+        </tr>
+        <tr>
+            <td>Herrod Chandler</td>
+            <td>Sales Assistant</td>
+            <td>San Francisco</td>
+            <td>59</td>
+            
+        </tr>
+        <tr>
+            <td>Rhona Davidson</td>
+            <td>Integration Specialist</td>
+            <td>Tokyo</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>Colleen Hurst</td>
+            <td>Javascript Developer</td>
+            <td>San Francisco</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>Sonya Frost</td>
+            <td>Software Engineer</td>
+            <td>Edinburgh</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>Jena Gaines</td>
+            <td>Office Manager</td>
+            <td>London</td>
+            <td>30</td>
+        </tr>
+       
+    </tfoot>
+</table>
+</div>
+
+      <!-- NAVBAR -->
+      <nav id="main-navbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+    
+          <!-- Brand -->
+          <a class="navbar-brand" href="#">
+            <img
+              src="Menu_icon_icon-icons.com_71858.png"
+              height="60" width="60"
+              
+              loading="lazy"
+            />
+          </a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" id="nav-items" aria-current="page" href="http://127.0.0.1:5500/navbar/home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/pricing.html">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav-items" href="http://127.0.0.1:5500/Maintainence%20master/navbar/contact.html">Contact</a>
+              </li>
+              <li>
+                <a id="heading">- XANDER -</a>
+              </li>
+            </ul>
+          </div>
+
+ 
+
+          <div>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="employee.png" height="25" width="25" id="profile" loading="lazy" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Your Profile"/>
+                          <i class="fas fa-user me-2"></i>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+
+          
+
+
+           
+        </div>
+
+        <!-- tooltip -->
+        <script>
+          // Initialize tooltips
+          var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+          })
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+        <script src="my_chart.js"></script>
+        <script src="myChart.js"></script>
+          
+</body>
+</html>
